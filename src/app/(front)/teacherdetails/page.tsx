@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Star, ChevronDown, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import Availability from "@/components/Availability";
 
 const TeacherDetails = () => {
   console.log("TeacherDetails page loaded");
@@ -147,28 +148,7 @@ const TeacherDetails = () => {
       </Card>
       <Card>
         <CardContent className="p-6">
-          <h2 className="text-xl font-semibold mb-4">Availability</h2>
-          <div className="flex justify-between items-center mb-4">
-            <Button variant="outline" size="icon">
-              <ChevronLeft className="h-4 w-4" />
-            </Button>
-            <span className="font-semibold">{selectedDate}</span>
-            <Button variant="outline" size="icon">
-              <ChevronRight className="h-4 w-4" />
-            </Button>
-          </div>
-          <div className="grid grid-cols-5 gap-2">
-            {["10:15 PM", "10:30 PM", "11:15 PM", "11:30 PM", "11:45 PM"].map(
-              (time) => (
-                <Button key={time} variant="outline" className="w-full">
-                  {time}
-                </Button>
-              )
-            )}
-          </div>
-          <p className="mt-4 text-sm text-gray-500">
-            Get $10 off this visit as a Sesame member. Activate today!
-          </p>
+          <Availability />
         </CardContent>
       </Card>
       <div className="fixed bottom-0 left-0 right-0 bg-white shadow-lg border-t border-gray-200 p-4 md:p-6 z-50">
