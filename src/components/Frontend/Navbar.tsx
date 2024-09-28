@@ -40,7 +40,7 @@ export default function Navbar() {
           <div className="hidden md:block">
             <Button
               variant="outline"
-              className="text-white border-white hover:bg-[#2e2a5b] hover:text-white text-lg"
+              className="text-black border-white hover:bg-[#2e2a5b] hover:text-white text-lg"
             >
               Login
             </Button>
@@ -51,7 +51,7 @@ export default function Navbar() {
                 <Button
                   variant="outline"
                   size="icon"
-                  className="text-white border-white hover:bg-[#2e2a5b]"
+                  className="text-black border-white hover:bg-[#2e2a5b]"
                 >
                   <Menu className="h-6 w-6" />
                   <span className="sr-only">Open menu</span>
@@ -71,7 +71,7 @@ export default function Navbar() {
                   ))}
                   <Button
                     variant="outline"
-                    className="text-white border-white hover:bg-[#2e2a5b] hover:text-white text-lg"
+                    className="text-slate-950 border-white hover:bg-[#2e2a5b] hover:text-black text-lg"
                   >
                     Login
                   </Button>
