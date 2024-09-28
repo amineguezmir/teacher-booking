@@ -59,8 +59,8 @@ const languages = [
 
 export default function EnhancedMegaMenu() {
   return (
-    <div className="flex justify-center bg-[#1e1b4b] ">
-      <NavigationMenu className="bg-[#1e1b4b]">
+    <div className="flex justify-center bg-[#1e1b4b] sticky top-0 z-100 w-full">
+      <NavigationMenu className="bg-[#1e1b4b] w-full">
         <NavigationMenuList className="shadow-lg rounded-lg">
           <NavigationMenuItem>
             <NavigationMenuTrigger>
@@ -116,13 +116,15 @@ export default function EnhancedMegaMenu() {
               </div>
             </NavigationMenuContent>
           </NavigationMenuItem>
+
+          {/* Subjects Menu */}
           <NavigationMenuItem>
             <NavigationMenuTrigger className="bg-secondary text-secondary-foreground hover:bg-secondary/90">
               <GraduationCap className="mr-2 h-4 w-4" />
               Subjects
             </NavigationMenuTrigger>
             <NavigationMenuContent>
-              <div className="p-4 md:w-[400px] lg:w-[500px]">
+              <div className="p-4 md:w-[400px] lg:w-[500px] w-full">
                 <h4 className="font-bold mb-2 text-secondary text-sm">
                   Available Subjects
                 </h4>
@@ -144,13 +146,15 @@ export default function EnhancedMegaMenu() {
               </div>
             </NavigationMenuContent>
           </NavigationMenuItem>
+
+          {/* Languages Menu */}
           <NavigationMenuItem>
             <NavigationMenuTrigger className="bg-accent text-accent-foreground hover:bg-accent/90">
               <Globe className="mr-2 h-4 w-4" />
               Languages
             </NavigationMenuTrigger>
             <NavigationMenuContent>
-              <div className="p-4 md:w-[400px] lg:w-[500px]">
+              <div className="p-4 md:w-[400px] lg:w-[500px] w-full">
                 <h4 className="font-bold mb-2 text-accent-foreground text-sm">
                   Available Languages
                 </h4>

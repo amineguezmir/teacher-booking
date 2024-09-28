@@ -1,10 +1,15 @@
+import NavBar from "@/components/dashboard/NavBar";
+import Sidebar from "@/components/dashboard/SideBar";
 import React, { ReactNode } from "react";
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <div>
-      <h2>I am Dashboard only pages </h2>
-      {children}
+      <NavBar />
+      <div className="flex">
+        <Sidebar />
+        <div className="p-8">{children}</div>
+      </div>
     </div>
   );
 }
