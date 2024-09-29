@@ -8,19 +8,48 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Facebook, Github } from "lucide-react";
 import { LoginFormInputs } from "../../../types/types";
+import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
+import { signIn } from "next-auth/react";
+import { Alert } from "flowbite-react";
+import { HiInformationCircle } from "react-icons/hi";
 
 export default function LoginForm() {
   const [showPassword, setShowPassword] = useState(false);
-
+  const [showNotification, setShowNotification] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<LoginFormInputs>();
 
-  const onSubmit = (data: LoginFormInputs) => {
-    console.log(data);
-  };
+  const router = useRouter(); // Move useRouter here
+
+  async function onSubmit(data: LoginFormInputs) {
+    setIsLoading(true);
+    try {
+      console.log("Attempting to sign in with credentials:", data);
+      const loginData = await signIn("credentials", {
+        ...data,
+        redirect: false,
+      });
+      console.log("SignIn response:", loginData);
+      if (loginData?.error) {
+        toast.error("Sign-in error: Check your credentials");
+        setShowNotification(true);
+      } else {
+        setShowNotification(false);
+        toast.success("Login Successful");
+        router.push("/dashboard");
+      }
+    } catch (error) {
+      console.error("Network Error:", error);
+      toast.error("It seems something is wrong with your Network");
+    } finally {
+      setIsLoading(false);
+    }
+  }
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-[#1e1b4b] p-4">
@@ -29,6 +58,12 @@ export default function LoginForm() {
           Sign In
         </h2>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+          {showNotification && (
+            <Alert color="failure" icon={HiInformationCircle}>
+              <span className="font-medium">Sign-in error!</span> Please Check
+              your credentials
+            </Alert>
+          )}
           <div className="space-y-2">
             <Label
               htmlFor="email"
@@ -104,8 +139,9 @@ export default function LoginForm() {
           <Button
             type="submit"
             className="w-full bg-[#1e1b4b] hover:bg-[#2d2a5d] text-white font-semibold py-2 rounded-md transition duration-300 ease-in-out"
+            disabled={isLoading} // Optionally disable the button while loading
           >
-            Sign In
+            {isLoading ? "Signing In..." : "Sign In"}
           </Button>
         </form>
         <div className="mt-6">

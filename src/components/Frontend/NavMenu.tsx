@@ -60,7 +60,11 @@ const languages = [
 
 export default function EnhancedMegaMenu() {
   const pathname = usePathname();
-  if (pathname === "/login" || pathname === "/register") {
+  if (
+    pathname === "/login" ||
+    pathname === "/register" ||
+    pathname === "/verify-account"
+  ) {
     return null;
   }
   return (
