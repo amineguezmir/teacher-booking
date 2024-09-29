@@ -24,6 +24,7 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
+import { usePathname } from "next/navigation";
 
 const topBooked = [
   { name: "Mathematics", href: "#", icon: Calculator },
@@ -58,6 +59,10 @@ const languages = [
 ];
 
 export default function EnhancedMegaMenu() {
+  const pathname = usePathname();
+  if (pathname === "/login" || pathname === "/register") {
+    return null;
+  }
   return (
     <div className="flex justify-center bg-[#1e1b4b] sticky top-0 z-100 w-full">
       <NavigationMenu className="bg-[#1e1b4b] w-full">

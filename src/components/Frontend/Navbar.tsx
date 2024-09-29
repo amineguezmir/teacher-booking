@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Menu, X } from "lucide-react";
+import { Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
@@ -16,7 +16,7 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="bg-[#1e1b4b] text-white w-full  sticky top-0 z-50">
+    <nav className="bg-[#1e1b4b] text-white w-full sticky top-0 z-50">
       <div className="px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex-shrink-0">
@@ -38,12 +38,14 @@ export default function Navbar() {
             </div>
           </div>
           <div className="hidden md:block">
-            <Button
-              variant="outline"
-              className="text-black border-white hover:bg-[#2e2a5b] hover:text-white text-lg"
-            >
-              Login
-            </Button>
+            <Link href="/login">
+              <Button
+                variant="outline"
+                className="text-black border-white hover:bg-[#2e2a5b] hover:text-white text-lg"
+              >
+                Login
+              </Button>
+            </Link>
           </div>
           <div className="md:hidden">
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
@@ -69,12 +71,14 @@ export default function Navbar() {
                       {item.name}
                     </Link>
                   ))}
-                  <Button
-                    variant="outline"
-                    className="text-slate-950 border-white hover:bg-[#2e2a5b] hover:text-black text-lg"
-                  >
-                    Login
-                  </Button>
+                  <Link href="/login">
+                    <Button
+                      variant="outline"
+                      className="text-slate-950 border-white hover:bg-[#2e2a5b] hover:text-black text-lg"
+                    >
+                      Login
+                    </Button>
+                  </Link>
                 </div>
               </SheetContent>
             </Sheet>
